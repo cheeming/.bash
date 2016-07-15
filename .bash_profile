@@ -8,7 +8,7 @@ export HISTFILESIZE=100000
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
 # setup vim as default editor
-export EDITOR=vim
+export EDITOR=nvim
 
 # run the bash completion
 if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
