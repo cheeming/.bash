@@ -90,3 +90,8 @@ alias vim=nvim
 alias vimdiff="vimdiff -c 'set diffopt+=iwhite'"
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
