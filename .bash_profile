@@ -4,6 +4,9 @@ export PROMPT_COMMAND='history -a'
 export HISTSIZE=100000
 export HISTFILESIZE=100000
 
+# for brew
+export PATH="/usr/local/sbin:$PATH"
+
 # for autojump
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
@@ -73,6 +76,7 @@ complete -F _source_ssh_agent_complete ssha
 ssha-init() {
     TYPE=${1}
     ssha ${TYPE}
+    ssh-add -D
     for FILE in `cat ~/Scripts/ssha-init.${TYPE}`; do
         ssh-add ${FILE}
     done
@@ -89,9 +93,18 @@ alias vi=nvim
 alias vim=nvim
 alias vimdiff="vimdiff -c 'set diffopt+=iwhite'"
 
+# git
+alias ggrep="git grep --color"
+
+# iterm2 shell integration
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+
+alias pathaws='export PATH=${PATH}:~/virtualenv/aws-cli/bin'
+alias pathgo='export PATH=${PATH}:~/src/go-work/bin'
+
+alias tb="nc termbin.com 9999"
