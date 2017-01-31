@@ -104,6 +104,8 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
+export HOMEBREW_GITHUB_API_TOKEN=`cat ~/.bash/.github_homebrew.api_token`
+
 alias pathaws='export PATH=${PATH}:~/virtualenv/aws-cli/bin'
 alias pathgo='export PATH=${PATH}:~/src/go-work/bin'
 
