@@ -5,7 +5,7 @@ export HISTSIZE=100000
 export HISTFILESIZE=100000
 
 # for brew
-export PATH="/usr/local/sbin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
 
 # for autojump
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
