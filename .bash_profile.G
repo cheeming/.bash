@@ -71,4 +71,4 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 export PATH="/usr/local/opt/ruby@2.4/bin:$PATH"
 
-source ~/.grab_profile
+[ -e ~/.grab_profile ] && source ~/.grab_profile
