@@ -4,32 +4,41 @@ export PROMPT_COMMAND='history -a'
 export HISTSIZE=100000
 export HISTFILESIZE=100000
 
+# fix unknown locale
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 # for brew
-export PATH="/usr/local/sbin:$PATH"
+export PATH="/opt/homebrew/sbin:/opt/homebrew/bin:/opt/homebrew/opt/go@1.21/bin:$PATH"
 
 # for autojump
-[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+#[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+
+# iterm2 shell integration
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
 # setup vim as default editor
 export EDITOR=nvim
+# for vim
+alias vi=nvim
+alias vim=nvim
+alias vimdiff="nvim -d -c 'set diffopt+=iwhite'"
 
 # run the bash completion
-if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
-    source /usr/local/etc/bash_completion.d/git-completion.bash
-fi
+#if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
+#    source /usr/local/etc/bash_completion.d/git-completion.bash
+#fi
 
 alias rm="rm -i"
 
 # python related
 export PIP_DOWNLOAD_CACHE=~/.virtualenv.cache
 
-# add android platform tools
-export PATH=~/src/android-sdk-macosx/platform-tools:$PATH
-export ANDROID_HOME=~/src/android-sdk-macosx/
+# ruby related
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 
-# fix unknown locale
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
+# aws related
+export PATH="/opt/aws/aws-cli/:$PATH"
 
 # setup bash completion and alias for sourcing virtual environemnts
 source_virtualenv() {
@@ -85,28 +94,8 @@ ssha-init() {
 complete -F _source_ssh_agent_complete ssha-init
 
 # for node.js
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
-
-# for vim
-alias vi=nvim
-alias vim=nvim
-alias vimdiff="vimdiff -c 'set diffopt+=iwhite'"
+#export NVM_DIR=~/.nvm
+#source $(brew --prefix nvm)/nvm.sh
 
 # git
 alias ggrep="git grep --color"
-
-# iterm2 shell integration
-test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
-
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
-export HOMEBREW_GITHUB_API_TOKEN=`cat ~/.bash/.github_homebrew.api_token`
-
-alias pathaws='export PATH=${PATH}:~/virtualenv/aws-cli/bin'
-alias pathgo='export PATH=${PATH}:~/src/go-work/bin'
-
-alias tb="nc termbin.com 9999"
